@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+/* Phone frame effects */
+.phone-shadow {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Phone screen glow effect */
+@keyframes screen-glow {
+  0% {
+    box-shadow: 0 0 5px 2px rgba(138, 43, 226, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 8px 4px rgba(219, 39, 119, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 5px 2px rgba(138, 43, 226, 0.3);
+  }
+}
+
+.screen-glow {
+  animation: screen-glow 4s infinite;
+}
+
+/* Fix to maintain consistent backdrop blur when video loads */
+.style-preserve-blur {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transform: translateZ(0);
+  isolation: isolate;
+  will-change: backdrop-filter;
+}
+
+/* Video container and iframe styles */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.phone-video {
+  position: absolute;
+  width: 400%; /* Much wider to ensure coverage */
+  height: 100%; /* Full height of the phone screen */
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  border: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .phone-video {
+    width: 500%; /* Even wider for small screens */
+  }
+}
