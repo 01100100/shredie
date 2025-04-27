@@ -45,7 +45,8 @@ const SignupForm = () => {
                             value={email()}
                             onInput={(e) => setEmail(e.target.value)}
                             placeholder="your@email.com"
-                            class="w-full px-4 py-3 pr-12 rounded-lg bg-white/05 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-white/40 text-sm backdrop-blur-sm"
+                            style={{ "-webkit-backdrop-filter": "blur()" }}
+                            class="w-full px-4 py-3 pr-12 rounded-lg bg-black/30 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-white/40 text-sm backdrop-blur-sm style-preserve-blur"
                             required
                         />
                         <button
