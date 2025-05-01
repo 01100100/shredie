@@ -18,7 +18,9 @@
     "vite-plugin-solid": "^2.11.6"
   },
   "dependencies": {
+    "@videojs/http-streaming": "^3.17.0",
     "resend": "^4.4.1",
-    "solid-js": "^1.9.5"
+    "solid-js": "^1.9.5",
+    "video.js": "^8.22.0"
   }
 }

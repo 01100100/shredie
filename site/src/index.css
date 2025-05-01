@@ -55,3 +55,27 @@
     width: 500%; /* Even wider for small screens */
   }
 }
+
+/* Video.js custom styles */
+.video-js {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.video-js .vjs-tech {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hide video.js UI components we don't need */
+.vjs-poster,
+.vjs-control-bar,
+.vjs-error-display,
+.vjs-loading-spinner {
+  display: none !important;
+}

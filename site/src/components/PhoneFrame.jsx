@@ -1,25 +1,75 @@
-import { createSignal, createEffect } from "solid-js"
+import { createSignal, createEffect, onMount, onCleanup } from "solid-js"
 import SignupForm from "./signupForm"
+import videojs from "video.js"
+import "video.js/dist/video-js.css"
 
 const PhoneFrame = (props) => {
   const [videoLoaded, setVideoLoaded] = createSignal(false)
   const [isTransitioning, setIsTransitioning] = createSignal(false)
   const [videoSrc, setVideoSrc] = createSignal(props.videoSrc)
+  let videoElement;
+  let player;
+
+  // Initialize Video.js player on mount
+  onMount(() => {
+    if (videoElement) {
+      player = videojs(videoElement, {
+        autoplay: true,
+        muted: true,
+        loop: true,
+        controls: false,
+        preload: "auto",
+        fluid: true,
+        html5: {
+          hls: {
+            overrideNative: true
+          },
+          nativeVideoTracks: false,
+          nativeAudioTracks: false,
+          nativeTextTracks: false
+        },
+        sources: [{
+          src: videoSrc(),
+          type: "application/x-mpegURL"
+        }]
+      });
+
+      player.on("loadeddata", () => {
+        setVideoLoaded(true);
+      });
+    }
+  });
+
+  // Clean up player on unmount
+  onCleanup(() => {
+    if (player) {
+      player.dispose();
+    }
+  });
 
   createEffect(() => {
     if (props.videoSrc !== videoSrc()) {
-      setVideoLoaded(false)
-      setVideoSrc(props.videoSrc)
+      setVideoLoaded(false);
+      setVideoSrc(props.videoSrc);
+
+      // Update video source if player exists
+      if (player) {
+        player.src({
+          src: props.videoSrc,
+          type: "application/x-mpegURL"
+        });
+        player.load();
+      }
     }
-  })
+  });
 
   const handleVideoChange = () => {
     if (isTransitioning()) return; // Prevent multiple clicks during transition
-    setIsTransitioning(true)
+    setIsTransitioning(true);
     setTimeout(() => {
-      props.onNextVideo && props.onNextVideo()
+      props.onNextVideo && props.onNextVideo();
       setTimeout(() => {
-        setIsTransitioning(false)
+        setIsTransitioning(false);
       }, 500);
     }, 500);
   }
@@ -42,17 +92,17 @@ const PhoneFrame = (props) => {
                 onClick={handleVideoChange}
                 onTouchEnd={handleVideoChange}
               >
-                <video
-                  class={`w-full h-full object-cover transition-all duration-300 ease-in-out
+                <div
+                  class={`w-full h-full transition-all duration-300 ease-in-out
                     ${videoLoaded() ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}
                     ${isTransitioning() ? 'opacity-0 scale-95' : ''}`}
-                  muted
-                  loop
-                  autoplay
-                  playsInline
-                  onLoadedData={() => setVideoLoaded(true)}
-                  src={videoSrc()}
-                />
+                >
+                  <video
+                    ref={videoElement}
+                    class="video-js vjs-tech w-full h-full object-cover"
+                    data-setup="{}"
+                  ></video>
+                </div>
 
                 {/* Screen glare effect */}
                 <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none"></div>

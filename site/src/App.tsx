@@ -3,23 +3,23 @@ import PhoneFrame from "./components/PhoneFrame"
 import { createSignal } from "solid-js"
 
 function App() {
-  const videoIds = [
-    "4dbbe5b1-be87-4ac5-988d-9397a7d1fd2f",
-    "c6d181e3-ae4a-4471-bf2e-22a9825197b6",
-    "1b9b45fe-bbc6-4764-b727-7b84955441d9"
+  // Using multiple HLS video sources instead of MP4 videos
+  const videoUrls = [
+    "https://vz-ecd0008c-2d0.b-cdn.net/918d58b5-4deb-452a-bec2-7062d8b51b7d/playlist.m3u8",
+    "https://vz-ecd0008c-2d0.b-cdn.net/11840840-106c-4e4f-9e2d-9b757876f1df/playlist.m3u8",
   ]
 
   const [currentVideoIndex, setCurrentVideoIndex] = createSignal(0)
 
   const getNextVideoIndex = () => {
-    return (currentVideoIndex() + 1) % videoIds.length
+    return (currentVideoIndex() + 1) % videoUrls.length
   }
 
   const handleNextVideo = () => {
     setCurrentVideoIndex(getNextVideoIndex())
   }
 
-  const videoUrl = () => `https://vz-ecd0008c-2d0.b-cdn.net/${videoIds[currentVideoIndex()]}/play_720p.mp4`
+  const videoUrl = () => videoUrls[currentVideoIndex()]
 
   return (
     <ParticleBackground>
