@@ -1,68 +1,37 @@
 @import 'tailwindcss';
 
-/* Super simple phone frame with perfect 9:16 ratio */
-.phone-frame {
-  position: relative;
-  width: 360px; 
-  height: 640px;
-  margin: 0 auto;
-  border: 10px solid #000;
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.phone-content {
-  position: relative;
+/* Video.js container for fluid mode */
+.video-js-container {
   width: 100%;
   height: 100%;
-  background: #000;
   overflow: hidden;
 }
 
-.video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Full-screen clickable area for changing videos */
-.video-next-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  cursor: pointer;
-}
-
-/* Form overlay */
-.form-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px;
-  z-index: 10;
-}
-
-/* Video.js customization - bare minimum needed */
-.video-js {
-  width: 100% !important;
+/* Video.js fluid mode styles */
+.video-js.vjs-fluid {
+  padding-top: 0 !important; /* Override the default padding-top */
   height: 100% !important;
+  width: 100% !important;
 }
 
-.vjs-tech {
+.video-js.vjs-fluid .vjs-tech {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
   object-fit: cover;
 }
 
 /* Hide Video.js UI */
 .vjs-control-bar, 
 .vjs-big-play-button, 
-.vjs-loading-spinner {
+.vjs-loading-spinner,
+.vjs-poster,
+.vjs-error-display {
   display: none !important;
 }
 

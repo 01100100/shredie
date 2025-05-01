@@ -5,6 +5,7 @@ import { createSignal } from "solid-js"
 function App() {
   // Using multiple HLS video sources instead of MP4 videos
   const videoUrls = [
+    "https://vz-ecd0008c-2d0.b-cdn.net/612c2cd0-133f-4af3-bd5e-71ed591c0bf0/playlist.m3u8",
     "https://vz-ecd0008c-2d0.b-cdn.net/918d58b5-4deb-452a-bec2-7062d8b51b7d/playlist.m3u8",
     "https://vz-ecd0008c-2d0.b-cdn.net/11840840-106c-4e4f-9e2d-9b757876f1df/playlist.m3u8",
   ]
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <ParticleBackground>
-      <div class="font-mono min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 md:p-8">
+      <div class="font-mono min-h-screen max-h-screen flex flex-col items-center justify-center p-2 sm:p-4 md:p-8">
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-2 sm:mb-4">
           <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Shredie</span>
         </h1>

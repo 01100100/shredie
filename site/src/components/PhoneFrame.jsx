@@ -9,7 +9,6 @@ const PhoneFrame = (props) => {
   let videoElement;
   let player;
 
-  // Initialize Video.js player on mount
   onMount(() => {
     if (videoElement) {
       player = videojs(videoElement, {
@@ -17,7 +16,7 @@ const PhoneFrame = (props) => {
         muted: true,
         loop: true,
         controls: false,
-        fluid: false,
+        fluid: true,
         aspectRatio: "9:16",
         sources: [{
           src: videoSrc(),
@@ -54,26 +53,26 @@ const PhoneFrame = (props) => {
   });
 
   return (
-    <div class="phone-frame">
+    <div className="relative mx-auto w-[280px] h-[560px] rounded-[2rem] border-[10px] border-black shadow-lg overflow-hidden">
       {/* Phone Content */}
-      <div class="phone-content">
-        {/* Video */}
-        <div class="video-container">
+      <div className="relative w-full h-full bg-black overflow-hidden">
+        {/* Video container for fluid mode */}
+        <div className="video-js-container absolute inset-0">
           <video
             ref={videoElement}
-            class="video-js"
-            data-setup="{}"
+            className="video-js vjs-fluid"
+            data-setup='{"fluid": true}'
           ></video>
         </div>
 
         {/* Form Overlay */}
-        <div class="form-overlay">
+        <div className="absolute bottom-0 left-0 w-full p-4 z-10">
           <SignupForm />
         </div>
 
         {/* Next Video Button */}
         <div
-          class="video-next-button"
+          className="absolute inset-0 z-5 cursor-pointer"
           onClick={() => props.onNextVideo && props.onNextVideo()}
         ></div>
       </div>
