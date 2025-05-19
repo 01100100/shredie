@@ -21,4 +21,4 @@ It is based off `maplibre-compose`
 
 > MapLibre Compose is a [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform/) wrapper around the [MapLibre](MapLibre) SDKs for rendering interactive maps. You can use it to add maps to your Compose UIs on Android, iOS, Desktop, and Web.
 
-[https://sargunv.github.io/maplibre-compose/](https://sargunv.github.io/maplibre-compose/) 
+[https://maplibre.org/maplibre-compose/](https://maplibre.org/maplibre-compose/) 
