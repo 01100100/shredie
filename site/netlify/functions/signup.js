@@ -29,29 +29,36 @@ exports.handler = async (event, context) => {
             to: email,
             subject: "Thanks for believing in the Shred! ❤️",
             html: `
-                    <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-                    <h1 style="color: #800080; text-align: center; margin-top: 20px;">Welcome to Shredie 🚀</h1>
-                    <p style="font-size: 18px; line-height: 1.6; color: #333; text-align: center;">
-                        Hey legend,
-                    </p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #333;">
-                        I'm Dave 👋
-                    </p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #333;">
-                        I am a huge fan of bikes, maps, and chasing the perfect shred. Shredie is my attempt to make the perfect companion on big bike adventures.
-                    </p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #333;">
-                        It's still early days, but you're now officially part of the crew. I'll be sharing new features, updates, and behind-the-scenes magic as we build something truly special together.
-                    </p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #333;">
-                        Exciting news... the first beta release of the Shredie app for Android and iOS is dropping soon! 🚴‍♂️📱 Stay tuned, because you'll be among the first to get access and can help shape where this goes 😁
-                    </p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #333;">
-                        Until then, wishing you big smiles, sweet lines, and endless good vibes. Thanks for hopping on board!
-                    </p>
-                    <p style="font-size: 16px; line-height: 1.6; color: #333; text-align: center; margin-top: 30px;">
-                        Stay shreddy, <br><strong>Dave 🤘</strong>
-                    </p>
+                    <div
+                        style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px"
+                    >
+                        <h1 style="color: #800080; text-align: center; margin-top: 20px">
+                            Welcome to Shredie 🚲
+                        </h1>
+                        <p style="font-size: 16px; line-height: 1.6; color: #333">
+                            I'm Dave 👋
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #333">
+                            I am a huge fan of bikes, maps, and chasing something I call "shred".
+                            Shredie is my attempt to make the perfect app that can be a companion on
+                            big (or small) bike adventures.
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #333">
+                            It's still early days, but you signed up to be a part of the crew.
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #333">
+                            Exciting news... the first beta release of the Shredie app for Android
+                            and iOS is dropping soon! 🚴‍♂️📱 and because you made some good
+                            decisions in life, you'll be the first to get access! The app is
+                            looking pretty rough atm, but you can help shape it 😁
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #333">
+                            Until then, wishing you big smiles, great shreds, and endless good
+                            vibes. Thanks again for hopping on board!
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #333; margin-top: 30px">
+                            Stay shredie, <br>Dave
+                        </p>
                     </div>
                 `,
         });
