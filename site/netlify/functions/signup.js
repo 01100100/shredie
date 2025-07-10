@@ -44,7 +44,7 @@ exports.handler = async (event, context) => {
                             big (or small) bike adventures.
                         </p>
                         <p style="font-size: 16px; line-height: 1.6; color: #333">
-                            It's still early days, but you signed up to be a part of the crew.
+                            It's still early days, but you somehow signed up to be a part of the crew.
                         </p>
                         <p style="font-size: 16px; line-height: 1.6; color: #333">
                             Exciting news... the first beta release of the Shredie app for Android
@@ -69,6 +69,20 @@ exports.handler = async (event, context) => {
                 statusCode: 500,
                 body: JSON.stringify({ error: "Failed to send email" }),
             };
+        }
+
+        // Add contact to Resend audience
+        try {
+            if (process.env.RESEND_AUDIENCE_ID) {
+                await resend.contacts.create({
+                    email: email,
+                    unsubscribed: false,
+                    audienceId: process.env.RESEND_AUDIENCE_ID,
+                });
+            }
+        } catch (contactError) {
+            console.error("Contact creation error:", contactError);
+            // Continue execution - don't fail signup if contact creation fails
         }
 
         return {
